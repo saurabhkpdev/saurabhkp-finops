@@ -22,11 +22,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Ambient glow effect */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-snowflake/5 rounded-full blur-3xl" />
-      </div>
 
       <div className="relative max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Header />

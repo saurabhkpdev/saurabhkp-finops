@@ -11,8 +11,7 @@ import { platformData } from "@/data/mockData";
 const COLORS = [
   "hsl(199, 89%, 48%)", // Snowflake
   "hsl(33, 100%, 50%)", // AWS
-  "hsl(270, 60%, 60%)", // Astronomer
-  "hsl(4, 90%, 58%)",   // Databricks
+  "hsl(262, 83%, 58%)", // Astronomer
 ];
 
 const data = platformData.map((p, index) => ({
