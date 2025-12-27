@@ -8,7 +8,6 @@ const platformVariants: Record<string, string> = {
   Snowflake: "bg-snowflake/10 text-snowflake border-snowflake/20",
   AWS: "bg-aws/10 text-aws border-aws/20",
   Astronomer: "bg-astronomer/10 text-astronomer border-astronomer/20",
-  Databricks: "bg-databricks/10 text-databricks border-databricks/20",
 };
 
 export function TopUsersTable() {

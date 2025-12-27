@@ -80,17 +80,6 @@ export const platformData: PlatformData[] = [
       { name: "Support", cost: 8500, percentage: 10.8 },
     ],
   },
-  {
-    name: "Databricks",
-    cost: 116500,
-    budget: 120000,
-    trend: -1.8,
-    services: [
-      { name: "Jobs Compute", cost: 62400, percentage: 53.6 },
-      { name: "SQL Warehouse", cost: 34200, percentage: 29.4 },
-      { name: "ML Runtime", cost: 19900, percentage: 17.0 },
-    ],
-  },
 ];
 
 export const userData: UserData[] = [
@@ -118,7 +107,7 @@ export const userData: UserData[] = [
     email: "priya.p@company.com",
     department: "ML Platform",
     totalCost: 35600,
-    platform: "Databricks",
+    platform: "Astronomer",
     trend: 8.7,
   },
   {
@@ -154,7 +143,7 @@ export const userData: UserData[] = [
     email: "l.thompson@company.com",
     department: "Data Science",
     totalCost: 22100,
-    platform: "Databricks",
+    platform: "Snowflake",
     trend: -8.4,
   },
   {
@@ -163,7 +152,7 @@ export const userData: UserData[] = [
     email: "a.morgan@company.com",
     department: "Analytics",
     totalCost: 19500,
-    platform: "Snowflake",
+    platform: "AWS",
     trend: 2.1,
   },
 ];

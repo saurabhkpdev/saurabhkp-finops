@@ -12,14 +12,12 @@ const platformColors: Record<string, string> = {
   Snowflake: "snowflake",
   AWS: "aws",
   Astronomer: "astronomer",
-  Databricks: "databricks",
 };
 
 const platformIcons: Record<string, string> = {
   Snowflake: "❄️",
   AWS: "☁️",
   Astronomer: "🚀",
-  Databricks: "⚡",
 };
 
 export function PlatformCard({ platform, delay = 0 }: PlatformCardProps) {

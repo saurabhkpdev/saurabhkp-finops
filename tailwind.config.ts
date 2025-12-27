@@ -62,7 +62,6 @@ export default {
         snowflake: "hsl(var(--snowflake))",
         aws: "hsl(var(--aws))",
         astronomer: "hsl(var(--astronomer))",
-        databricks: "hsl(var(--databricks))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
