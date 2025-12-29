@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
-import { DollarSign, TrendingUp, Target, AlertTriangle, RefreshCw } from "lucide-react";
+import { Link } from "react-router-dom";
+import { DollarSign, TrendingUp, Target, AlertTriangle, RefreshCw, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MetricCard } from "@/components/dashboard/MetricCard";
 import { MonthlyCostChart } from "@/components/dashboard/MonthlyCostChart";
@@ -133,9 +134,17 @@ const Index = () => {
 
         {/* Platform Cards */}
         <div className="mb-8">
-          <h2 className="text-xl font-semibold text-foreground mb-4">
-            Platform Breakdown
-          </h2>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-semibold text-foreground">
+              Platform Breakdown
+            </h2>
+            <Link to="/services">
+              <Button variant="outline" size="sm" className="gap-2">
+                View All Services
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {platformData.map((platform, index) => (
               <PlatformCard
