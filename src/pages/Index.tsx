@@ -12,11 +12,7 @@ import { ExportButton } from "@/components/dashboard/ExportButton";
 import { BudgetAlert } from "@/components/dashboard/BudgetAlert";
 import { CostForecastChart } from "@/components/dashboard/CostForecastChart";
 import { DepartmentBreakdown } from "@/components/dashboard/DepartmentBreakdown";
-import {
-  platformData,
-  monthlyData,
-} from "@/data/mockData";
-
+import { platformData, monthlyData } from "@/data/mockData";
 const Index = () => {
   const [selectedRange, setSelectedRange] = useState<DateRange>(dateRanges[0]);
 
@@ -29,46 +25,33 @@ const Index = () => {
   const yearlyTotal = useMemo(() => {
     return filteredMonthlyData.reduce((acc, m) => acc + m.cost, 0);
   }, [filteredMonthlyData]);
-
   const yearlyBudget = useMemo(() => {
     return filteredMonthlyData.reduce((acc, m) => acc + m.budget, 0);
   }, [filteredMonthlyData]);
-
-  const budgetUtilization = ((yearlyTotal / yearlyBudget) * 100).toFixed(1);
-
+  const budgetUtilization = (yearlyTotal / yearlyBudget * 100).toFixed(1);
   const monthlyTrend = useMemo(() => {
     if (filteredMonthlyData.length < 2) return 0;
     const current = filteredMonthlyData[filteredMonthlyData.length - 1];
     const previous = filteredMonthlyData[filteredMonthlyData.length - 2];
-    return ((current.cost - previous.cost) / previous.cost) * 100;
+    return (current.cost - previous.cost) / previous.cost * 100;
   }, [filteredMonthlyData]);
-
-  const overBudgetMonths = filteredMonthlyData.filter((m) => m.cost > m.budget).length;
+  const overBudgetMonths = filteredMonthlyData.filter(m => m.cost > m.budget).length;
 
   // Check which platforms are over or near budget
-  const platformsOverBudget = platformData.filter((p) => p.cost > p.budget);
-  const platformsNearBudget = platformData.filter(
-    (p) => p.cost <= p.budget && p.cost / p.budget >= 0.85
-  );
-
-  return (
-    <div className="min-h-screen bg-background">
+  const platformsOverBudget = platformData.filter(p => p.cost > p.budget);
+  const platformsNearBudget = platformData.filter(p => p.cost <= p.budget && p.cost / p.budget >= 0.85);
+  return <div className="min-h-screen bg-background">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header with filters */}
         <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 animate-fade-in">
           <div>
-            <h1 className="text-3xl font-bold text-foreground tracking-tight">
-              Cost Dashboard
-            </h1>
+            <h1 className="text-3xl font-bold text-foreground tracking-tight">FinOps Dashboard</h1>
             <p className="text-muted-foreground mt-1">
               Monitor and analyze cloud platform spending across your organization
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
-            <DateRangePicker
-              selectedRange={selectedRange}
-              onRangeChange={setSelectedRange}
-            />
+            <DateRangePicker selectedRange={selectedRange} onRangeChange={setSelectedRange} />
             <ExportButton />
             <Button variant="outline" size="sm" className="gap-2">
               <RefreshCw className="h-4 w-4" />
@@ -78,48 +61,17 @@ const Index = () => {
         </header>
 
         {/* Budget Alerts */}
-        {(platformsOverBudget.length > 0 || platformsNearBudget.length > 0) && (
-          <div className="mb-6 space-y-2 animate-slide-up">
-            {platformsOverBudget.map((p) => (
-              <BudgetAlert key={p.name} current={p.cost} budget={p.budget} label={p.name} />
-            ))}
-            {platformsNearBudget.map((p) => (
-              <BudgetAlert key={p.name} current={p.cost} budget={p.budget} label={p.name} />
-            ))}
-          </div>
-        )}
+        {(platformsOverBudget.length > 0 || platformsNearBudget.length > 0) && <div className="mb-6 space-y-2 animate-slide-up">
+            {platformsOverBudget.map(p => <BudgetAlert key={p.name} current={p.cost} budget={p.budget} label={p.name} />)}
+            {platformsNearBudget.map(p => <BudgetAlert key={p.name} current={p.cost} budget={p.budget} label={p.name} />)}
+          </div>}
 
         {/* Key Metrics */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <MetricCard
-            title={`${selectedRange.label} Cost`}
-            value={`$${(yearlyTotal / 1000).toFixed(0)}k`}
-            subtitle="Across all platforms"
-            icon={<DollarSign className="h-5 w-5" />}
-            delay={0}
-          />
-          <MetricCard
-            title="Monthly Trend"
-            value={`${monthlyTrend > 0 ? "+" : ""}${monthlyTrend.toFixed(1)}%`}
-            subtitle="vs previous month"
-            trend={monthlyTrend}
-            icon={<TrendingUp className="h-5 w-5" />}
-            delay={50}
-          />
-          <MetricCard
-            title="Budget Utilization"
-            value={`${budgetUtilization}%`}
-            subtitle={`$${(yearlyBudget / 1000).toFixed(0)}k total budget`}
-            icon={<Target className="h-5 w-5" />}
-            delay={100}
-          />
-          <MetricCard
-            title="Over Budget Months"
-            value={`${overBudgetMonths}`}
-            subtitle="months exceeded budget"
-            icon={<AlertTriangle className="h-5 w-5" />}
-            delay={150}
-          />
+          <MetricCard title={`${selectedRange.label} Cost`} value={`$${(yearlyTotal / 1000).toFixed(0)}k`} subtitle="Across all platforms" icon={<DollarSign className="h-5 w-5" />} delay={0} />
+          <MetricCard title="Monthly Trend" value={`${monthlyTrend > 0 ? "+" : ""}${monthlyTrend.toFixed(1)}%`} subtitle="vs previous month" trend={monthlyTrend} icon={<TrendingUp className="h-5 w-5" />} delay={50} />
+          <MetricCard title="Budget Utilization" value={`${budgetUtilization}%`} subtitle={`$${(yearlyBudget / 1000).toFixed(0)}k total budget`} icon={<Target className="h-5 w-5" />} delay={100} />
+          <MetricCard title="Over Budget Months" value={`${overBudgetMonths}`} subtitle="months exceeded budget" icon={<AlertTriangle className="h-5 w-5" />} delay={150} />
         </div>
 
         {/* Monthly Chart */}
@@ -146,13 +98,7 @@ const Index = () => {
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {platformData.map((platform, index) => (
-              <PlatformCard
-                key={platform.name}
-                platform={platform}
-                delay={300 + index * 50}
-              />
-            ))}
+            {platformData.map((platform, index) => <PlatformCard key={platform.name} platform={platform} delay={300 + index * 50} />)}
           </div>
         </div>
 
@@ -167,8 +113,6 @@ const Index = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
