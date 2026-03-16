@@ -6,6 +6,7 @@ import { MetricCard } from "@/components/dashboard/MetricCard";
 import { MonthlyCostChart } from "@/components/dashboard/MonthlyCostChart";
 import { PlatformCard } from "@/components/dashboard/PlatformCard";
 import { ServiceBreakdown } from "@/components/dashboard/ServiceBreakdown";
+import { EnvironmentBreakdown } from "@/components/dashboard/EnvironmentBreakdown";
 import { TopUsersTable } from "@/components/dashboard/TopUsersTable";
 import { DateRangePicker, dateRanges, DateRange } from "@/components/dashboard/DateRangePicker";
 import { ExportButton } from "@/components/dashboard/ExportButton";
@@ -100,6 +101,11 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {platformData.map((platform, index) => <PlatformCard key={platform.name} platform={platform} delay={300 + index * 50} />)}
           </div>
+        </div>
+
+        {/* Environment Breakdown */}
+        <div className="mb-8">
+          <EnvironmentBreakdown />
         </div>
 
         {/* Bottom Section */}
