@@ -192,6 +192,12 @@ export function EnvironmentBreakdown() {
           </BarChart>
         </ResponsiveContainer>
       </div>
+
+      <EnvironmentDetailModal
+        envKey={selectedEnv}
+        open={!!selectedEnv}
+        onOpenChange={(open) => !open && setSelectedEnv(null)}
+      />
     </div>
   );
 }
