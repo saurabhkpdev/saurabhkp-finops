@@ -19,6 +19,7 @@ import {
 } from "recharts";
 import { Badge } from "@/components/ui/badge";
 import { Server, TestTube, Rocket } from "lucide-react";
+import { EnvironmentDetailModal, EnvKey } from "./EnvironmentDetailModal";
 
 const environmentData = [
   {
