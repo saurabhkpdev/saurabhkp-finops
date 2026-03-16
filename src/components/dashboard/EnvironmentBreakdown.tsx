@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   BarChart,
   Bar,
@@ -10,6 +11,7 @@ import {
 } from "recharts";
 import { Badge } from "@/components/ui/badge";
 import { Server, TestTube, Rocket } from "lucide-react";
+import { EnvironmentDetailModal, EnvKey } from "./EnvironmentDetailModal";
 
 const environmentData = [
   {
@@ -82,6 +84,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 export function EnvironmentBreakdown() {
+  const [selectedEnv, setSelectedEnv] = useState<EnvKey | null>(null);
+
   return (
     <div
       className="glass-card rounded-xl p-6 animate-slide-up"
@@ -99,9 +103,10 @@ export function EnvironmentBreakdown() {
       {/* Summary cards */}
       <div className="grid grid-cols-3 gap-3 mb-6">
         {envSummary.map((env) => (
-          <div
+          <button
             key={env.key}
-            className="rounded-lg border border-border bg-muted/30 p-3 text-center"
+            onClick={() => setSelectedEnv(env.key)}
+            className="rounded-lg border border-border bg-muted/30 p-3 text-center hover:bg-muted/60 hover:border-primary/30 transition-all cursor-pointer"
           >
             <div className="flex items-center justify-center gap-1.5 mb-1">
               <span style={{ color: env.color }}>{env.icon}</span>
@@ -115,7 +120,8 @@ export function EnvironmentBreakdown() {
             <Badge variant="secondary" className="text-[10px] mt-1">
               {env.share.toFixed(1)}%
             </Badge>
-          </div>
+            <span className="text-[10px] text-muted-foreground mt-1 block">Click to drill down</span>
+          </button>
         ))}
       </div>
 
@@ -178,6 +184,12 @@ export function EnvironmentBreakdown() {
           </BarChart>
         </ResponsiveContainer>
       </div>
+
+      <EnvironmentDetailModal
+        envKey={selectedEnv}
+        open={!!selectedEnv}
+        onOpenChange={(open) => !open && setSelectedEnv(null)}
+      />
     </div>
   );
 }
