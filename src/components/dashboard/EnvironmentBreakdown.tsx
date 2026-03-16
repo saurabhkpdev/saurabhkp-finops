@@ -111,9 +111,10 @@ export function EnvironmentBreakdown() {
       {/* Summary cards */}
       <div className="grid grid-cols-3 gap-3 mb-6">
         {envSummary.map((env) => (
-          <div
+          <button
             key={env.key}
-            className="rounded-lg border border-border bg-muted/30 p-3 text-center"
+            onClick={() => setSelectedEnv(env.key)}
+            className="rounded-lg border border-border bg-muted/30 p-3 text-center hover:bg-muted/60 hover:border-primary/30 transition-all cursor-pointer"
           >
             <div className="flex items-center justify-center gap-1.5 mb-1">
               <span style={{ color: env.color }}>{env.icon}</span>
