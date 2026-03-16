@@ -92,6 +92,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 export function EnvironmentBreakdown() {
+  const [selectedEnv, setSelectedEnv] = useState<EnvKey | null>(null);
+
   return (
     <div
       className="glass-card rounded-xl p-6 animate-slide-up"
