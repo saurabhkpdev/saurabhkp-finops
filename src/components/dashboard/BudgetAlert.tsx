@@ -32,5 +32,10 @@ export function BudgetAlert({
     warning: "bg-yellow-500/10 border-yellow-500/20 text-yellow-700",
     danger: "bg-red-500/10 border-red-500/20 text-red-700"
   };
-  return;
+  return (
+    <div className={cn("flex items-center gap-3 px-4 py-3 rounded-lg border", statusStyles[status])}>
+      <Icon className="h-5 w-5 shrink-0" />
+      <span className="text-sm font-medium">{message}</span>
+    </div>
+  );
 }
