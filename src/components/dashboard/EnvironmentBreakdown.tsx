@@ -128,7 +128,8 @@ export function EnvironmentBreakdown() {
             <Badge variant="secondary" className="text-[10px] mt-1">
               {env.share.toFixed(1)}%
             </Badge>
-          </div>
+            <span className="text-[10px] text-muted-foreground mt-1 block">Click to drill down</span>
+          </button>
         ))}
       </div>
 
