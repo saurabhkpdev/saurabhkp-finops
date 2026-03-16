@@ -9,14 +9,6 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Legend,
-} from "recharts";
 import { Badge } from "@/components/ui/badge";
 import { Server, TestTube, Rocket } from "lucide-react";
 import { EnvironmentDetailModal, EnvKey } from "./EnvironmentDetailModal";
