@@ -6,6 +6,7 @@ import { MetricCard } from "@/components/dashboard/MetricCard";
 import { MonthlyCostChart } from "@/components/dashboard/MonthlyCostChart";
 import { PlatformCard } from "@/components/dashboard/PlatformCard";
 import { ServiceBreakdown } from "@/components/dashboard/ServiceBreakdown";
+import { EnvironmentBreakdown } from "@/components/dashboard/EnvironmentBreakdown";
 import { TopUsersTable } from "@/components/dashboard/TopUsersTable";
 import { DateRangePicker, dateRanges, DateRange } from "@/components/dashboard/DateRangePicker";
 import { ExportButton } from "@/components/dashboard/ExportButton";
