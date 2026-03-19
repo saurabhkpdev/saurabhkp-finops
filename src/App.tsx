@@ -20,11 +20,11 @@ const App = () => (
       <BrowserRouter>
         <AppLayout>
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/services" element={<Services />} />
+            <Route path="/" element={<PlatformStats />} />
             <Route path="/platform" element={<PlatformStats />} />
+            <Route path="/finops" element={<Index />} />
+            <Route path="/services" element={<Services />} />
             <Route path="/security" element={<SecurityOps />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AppLayout>

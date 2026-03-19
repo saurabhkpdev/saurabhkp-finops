@@ -23,8 +23,8 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
             <div className="flex items-center gap-1">
               {navItems.map((item) => {
                 const isActive =
-                  item.path === "/"
-                    ? location.pathname === "/"
+                  item.path === "/platform"
+                    ? location.pathname === "/" || location.pathname === "/platform"
                     : location.pathname.startsWith(item.path);
                 return (
                   <Link
