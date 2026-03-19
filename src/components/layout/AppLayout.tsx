@@ -3,8 +3,8 @@ import { DollarSign, Activity, Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { label: "FinOps", path: "/", icon: DollarSign },
   { label: "Platform Statistics", path: "/platform", icon: Activity },
+  { label: "FinOps", path: "/finops", icon: DollarSign },
   { label: "Security Ops", path: "/security", icon: Shield },
 ];
 
@@ -23,8 +23,8 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
             <div className="flex items-center gap-1">
               {navItems.map((item) => {
                 const isActive =
-                  item.path === "/"
-                    ? location.pathname === "/"
+                  item.path === "/platform"
+                    ? location.pathname === "/" || location.pathname === "/platform"
                     : location.pathname.startsWith(item.path);
                 return (
                   <Link
