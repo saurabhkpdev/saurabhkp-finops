@@ -13,7 +13,7 @@ import {
 } from "recharts";
 import {
   serviceHealthData, deploymentData, pipelineData, doraMetrics,
-  warehouseData, dataQualityData, dataVolumeMetrics, productUsersData, datasetMetrics
+  warehouseData, dataQualityData, dataVolumeMetrics, productUsersData, datasetMetrics, dataProductMetrics
 } from "@/data/platformStatsData";
 
 const statusColors: Record<string, string> = {
