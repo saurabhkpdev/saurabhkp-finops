@@ -1,64 +1,116 @@
 export interface ServiceHealth {
   name: string;
+  platform: "Snowflake" | "Airflow" | "dbt" | "Kafka" | "Spark" | "Looker";
   status: "healthy" | "degraded" | "down";
   uptime: number;
   latency: number;
   errorRate: number;
   cpu: number;
   memory: number;
-  requests: number;
+  throughput: string;
 }
 
 export interface DeploymentMetric {
   week: string;
-  deployments: number;
+  dbtRuns: number;
+  dagDeploys: number;
   failures: number;
   rollbacks: number;
 }
 
 export interface PipelineMetric {
   name: string;
+  platform: "Airflow" | "dbt" | "Kafka" | "Spark";
   status: "running" | "success" | "failed" | "queued";
   successRate: number;
   avgDuration: number;
   lastRun: string;
   recordsProcessed: number;
+  dataFreshness: string;
+}
+
+export interface WarehouseMetric {
+  name: string;
+  size: string;
+  status: "active" | "suspended" | "resizing";
+  creditsUsed: number;
+  creditBudget: number;
+  avgQueueTime: number;
+  queriesExecuted: number;
+  spillToRemote: number;
+}
+
+export interface DataQualityMetric {
+  table: string;
+  database: string;
+  testsTotal: number;
+  testsPassing: number;
+  testsFailing: number;
+  rowCount: string;
+  lastUpdated: string;
+  freshness: "fresh" | "stale" | "critical";
 }
 
 export const serviceHealthData: ServiceHealth[] = [
-  { name: "API Gateway", status: "healthy", uptime: 99.98, latency: 45, errorRate: 0.02, cpu: 34, memory: 52, requests: 1240000 },
-  { name: "Auth Service", status: "healthy", uptime: 99.99, latency: 28, errorRate: 0.01, cpu: 22, memory: 38, requests: 890000 },
-  { name: "Data Pipeline", status: "degraded", uptime: 99.85, latency: 120, errorRate: 0.15, cpu: 78, memory: 82, requests: 450000 },
-  { name: "ML Inference", status: "healthy", uptime: 99.92, latency: 210, errorRate: 0.08, cpu: 65, memory: 71, requests: 320000 },
-  { name: "Notification Svc", status: "healthy", uptime: 99.97, latency: 35, errorRate: 0.03, cpu: 18, memory: 29, requests: 560000 },
-  { name: "Search Engine", status: "down", uptime: 98.20, latency: 0, errorRate: 100, cpu: 0, memory: 0, requests: 0 },
-  { name: "Cache Layer", status: "healthy", uptime: 99.99, latency: 3, errorRate: 0.005, cpu: 42, memory: 88, requests: 3200000 },
-  { name: "Job Scheduler", status: "healthy", uptime: 99.95, latency: 55, errorRate: 0.05, cpu: 30, memory: 44, requests: 180000 },
+  { name: "Snowflake", platform: "Snowflake", status: "healthy", uptime: 99.98, latency: 120, errorRate: 0.02, cpu: 45, memory: 62, throughput: "2.4TB/day" },
+  { name: "Airflow Scheduler", platform: "Airflow", status: "healthy", uptime: 99.95, latency: 35, errorRate: 0.05, cpu: 58, memory: 72, throughput: "340 DAGs/hr" },
+  { name: "Airflow Workers", platform: "Airflow", status: "degraded", uptime: 99.82, latency: 80, errorRate: 0.18, cpu: 88, memory: 85, throughput: "180 tasks/hr" },
+  { name: "dbt Cloud", platform: "dbt", status: "healthy", uptime: 99.99, latency: 25, errorRate: 0.01, cpu: 32, memory: 44, throughput: "520 models/run" },
+  { name: "Kafka Cluster", platform: "Kafka", status: "healthy", uptime: 99.97, latency: 8, errorRate: 0.03, cpu: 52, memory: 68, throughput: "1.8M msgs/sec" },
+  { name: "Spark Cluster", platform: "Spark", status: "degraded", uptime: 99.78, latency: 250, errorRate: 0.22, cpu: 92, memory: 88, throughput: "850 GB/hr" },
+  { name: "Looker", platform: "Looker", status: "healthy", uptime: 99.96, latency: 180, errorRate: 0.04, cpu: 28, memory: 38, throughput: "12K queries/hr" },
+  { name: "Kafka Connect", platform: "Kafka", status: "down", uptime: 98.50, latency: 0, errorRate: 100, cpu: 0, memory: 0, throughput: "0 msgs/sec" },
 ];
 
 export const deploymentData: DeploymentMetric[] = [
-  { week: "W1", deployments: 18, failures: 2, rollbacks: 1 },
-  { week: "W2", deployments: 24, failures: 1, rollbacks: 0 },
-  { week: "W3", deployments: 15, failures: 3, rollbacks: 2 },
-  { week: "W4", deployments: 22, failures: 0, rollbacks: 0 },
-  { week: "W5", deployments: 28, failures: 2, rollbacks: 1 },
-  { week: "W6", deployments: 20, failures: 1, rollbacks: 0 },
-  { week: "W7", deployments: 31, failures: 1, rollbacks: 1 },
-  { week: "W8", deployments: 26, failures: 0, rollbacks: 0 },
+  { week: "W1", dbtRuns: 42, dagDeploys: 12, failures: 3, rollbacks: 1 },
+  { week: "W2", dbtRuns: 56, dagDeploys: 18, failures: 2, rollbacks: 0 },
+  { week: "W3", dbtRuns: 38, dagDeploys: 8, failures: 5, rollbacks: 2 },
+  { week: "W4", dbtRuns: 61, dagDeploys: 22, failures: 1, rollbacks: 0 },
+  { week: "W5", dbtRuns: 48, dagDeploys: 15, failures: 4, rollbacks: 1 },
+  { week: "W6", dbtRuns: 55, dagDeploys: 20, failures: 2, rollbacks: 0 },
+  { week: "W7", dbtRuns: 70, dagDeploys: 25, failures: 1, rollbacks: 1 },
+  { week: "W8", dbtRuns: 63, dagDeploys: 19, failures: 0, rollbacks: 0 },
 ];
 
 export const pipelineData: PipelineMetric[] = [
-  { name: "ETL - Customer Data", status: "success", successRate: 98.5, avgDuration: 12, lastRun: "5 min ago", recordsProcessed: 2450000 },
-  { name: "ETL - Transactions", status: "running", successRate: 99.1, avgDuration: 25, lastRun: "Running", recordsProcessed: 8900000 },
-  { name: "ML - Feature Store", status: "success", successRate: 97.2, avgDuration: 45, lastRun: "1 hr ago", recordsProcessed: 1200000 },
-  { name: "Analytics - Daily Agg", status: "failed", successRate: 94.8, avgDuration: 18, lastRun: "3 hr ago", recordsProcessed: 0 },
-  { name: "Sync - CRM Export", status: "success", successRate: 99.8, avgDuration: 8, lastRun: "30 min ago", recordsProcessed: 340000 },
-  { name: "ETL - Event Stream", status: "queued", successRate: 96.5, avgDuration: 35, lastRun: "Queued", recordsProcessed: 5600000 },
+  { name: "Raw → Staging (Customers)", platform: "Airflow", status: "success", successRate: 98.5, avgDuration: 12, lastRun: "5 min ago", recordsProcessed: 2450000, dataFreshness: "5 min" },
+  { name: "Staging → Marts (Revenue)", platform: "dbt", status: "running", successRate: 99.1, avgDuration: 25, lastRun: "Running", recordsProcessed: 8900000, dataFreshness: "Running" },
+  { name: "Clickstream Ingestion", platform: "Kafka", status: "success", successRate: 99.8, avgDuration: 0, lastRun: "Streaming", recordsProcessed: 45000000, dataFreshness: "Real-time" },
+  { name: "Feature Store Refresh", platform: "Spark", status: "failed", successRate: 94.2, avgDuration: 45, lastRun: "3 hr ago", recordsProcessed: 0, dataFreshness: "3 hrs (stale)" },
+  { name: "CRM Sync → Snowflake", platform: "Airflow", status: "success", successRate: 97.8, avgDuration: 18, lastRun: "30 min ago", recordsProcessed: 340000, dataFreshness: "30 min" },
+  { name: "Event Stream → Data Lake", platform: "Kafka", status: "queued", successRate: 96.5, avgDuration: 0, lastRun: "Queued", recordsProcessed: 5600000, dataFreshness: "Pending" },
+  { name: "dbt Nightly Full Refresh", platform: "dbt", status: "success", successRate: 95.3, avgDuration: 120, lastRun: "6 hr ago", recordsProcessed: 28000000, dataFreshness: "6 hrs" },
+  { name: "Anomaly Detection Pipeline", platform: "Spark", status: "success", successRate: 93.8, avgDuration: 60, lastRun: "1 hr ago", recordsProcessed: 1200000, dataFreshness: "1 hr" },
+];
+
+export const warehouseData: WarehouseMetric[] = [
+  { name: "ANALYTICS_WH", size: "X-Large", status: "active", creditsUsed: 342, creditBudget: 400, avgQueueTime: 1.2, queriesExecuted: 45200, spillToRemote: 2.1 },
+  { name: "ETL_WH", size: "Large", status: "active", creditsUsed: 218, creditBudget: 250, avgQueueTime: 0.8, queriesExecuted: 12800, spillToRemote: 0.5 },
+  { name: "DBT_WH", size: "Medium", status: "active", creditsUsed: 156, creditBudget: 200, avgQueueTime: 0.3, queriesExecuted: 8900, spillToRemote: 0.1 },
+  { name: "REPORTING_WH", size: "Small", status: "suspended", creditsUsed: 45, creditBudget: 100, avgQueueTime: 0, queriesExecuted: 3200, spillToRemote: 0 },
+  { name: "ML_WH", size: "2X-Large", status: "resizing", creditsUsed: 480, creditBudget: 500, avgQueueTime: 3.5, queriesExecuted: 2100, spillToRemote: 8.4 },
+];
+
+export const dataQualityData: DataQualityMetric[] = [
+  { table: "dim_customers", database: "ANALYTICS", testsTotal: 12, testsPassing: 12, testsFailing: 0, rowCount: "2.4M", lastUpdated: "5 min ago", freshness: "fresh" },
+  { table: "fct_orders", database: "ANALYTICS", testsTotal: 18, testsPassing: 16, testsFailing: 2, rowCount: "45.2M", lastUpdated: "30 min ago", freshness: "fresh" },
+  { table: "fct_revenue", database: "ANALYTICS", testsTotal: 15, testsPassing: 15, testsFailing: 0, rowCount: "12.8M", lastUpdated: "1 hr ago", freshness: "fresh" },
+  { table: "stg_clickstream", database: "RAW", testsTotal: 8, testsPassing: 5, testsFailing: 3, rowCount: "890M", lastUpdated: "4 hr ago", freshness: "stale" },
+  { table: "dim_products", database: "ANALYTICS", testsTotal: 10, testsPassing: 10, testsFailing: 0, rowCount: "52K", lastUpdated: "2 hr ago", freshness: "fresh" },
+  { table: "fct_sessions", database: "ANALYTICS", testsTotal: 14, testsPassing: 8, testsFailing: 6, rowCount: "1.2B", lastUpdated: "12 hr ago", freshness: "critical" },
 ];
 
 export const doraMetrics = {
-  deployFrequency: { value: "3.2/day", trend: 12 },
-  leadTime: { value: "2.4 hrs", trend: -8 },
-  changeFailureRate: { value: "4.2%", trend: -15 },
-  mttr: { value: "18 min", trend: -22 },
+  deployFrequency: { value: "8.2/day", trend: 18, description: "dbt + Airflow deploys" },
+  leadTime: { value: "1.8 hrs", trend: -12, description: "Code to production" },
+  changeFailureRate: { value: "3.8%", trend: -20, description: "Failed pipeline runs" },
+  mttr: { value: "14 min", trend: -28, description: "Pipeline recovery time" },
+};
+
+export const dataVolumeMetrics = {
+  totalIngested: "4.2 TB",
+  dailyGrowth: "+128 GB",
+  activeTablesCount: 1240,
+  staleTablesCount: 45,
 };
