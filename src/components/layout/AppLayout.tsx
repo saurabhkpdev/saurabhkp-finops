@@ -18,7 +18,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center h-14 gap-8">
             <span className="text-lg font-bold tracking-tight text-foreground whitespace-nowrap">
-              🔭 Platform<span className="text-primary">Obs</span>
+              🔭 Platform <span className="text-primary">Observability</span>
             </span>
             <div className="flex items-center gap-1">
               {navItems.map((item) => {
