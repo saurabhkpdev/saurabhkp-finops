@@ -41,7 +41,8 @@ const platformIcons: Record<string, string> = {
   dbt: "🔶",
   Kafka: "📡",
   Spark: "⚡",
-  Looker: "👁️",
+  "Power BI": "📊",
+  Tableau: "📈",
 };
 
 const PlatformStats = () => {

@@ -125,7 +125,8 @@ export interface DatasetMetric {
 export const datasetMetrics: DatasetMetric[] = [
   { platform: "Snowflake", icon: "❄️", datasets: 4820 },
   { platform: "AWS S3", icon: "☁️", datasets: 1340 },
-  { platform: "Looker", icon: "👁️", datasets: 215 },
+  { platform: "Power BI", icon: "📊", datasets: 185 },
+  { platform: "Tableau", icon: "📈", datasets: 142 },
   { platform: "dbt", icon: "🔶", datasets: 520 },
   { platform: "Kafka", icon: "📡", datasets: 386 },
 ];
