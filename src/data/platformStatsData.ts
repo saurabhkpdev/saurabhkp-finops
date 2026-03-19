@@ -115,6 +115,20 @@ export const dataVolumeMetrics = {
   staleTablesCount: 45,
 };
 
+export interface DatasetMetric {
+  platform: string;
+  icon: string;
+  datasets: number;
+}
+
+export const datasetMetrics: DatasetMetric[] = [
+  { platform: "Snowflake", icon: "❄️", datasets: 4820 },
+  { platform: "AWS S3", icon: "☁️", datasets: 1340 },
+  { platform: "Looker", icon: "👁️", datasets: 215 },
+  { platform: "dbt", icon: "🔶", datasets: 520 },
+  { platform: "Kafka", icon: "📡", datasets: 386 },
+];
+
 export interface ProductUserMetric {
   product: string;
   icon: string;
