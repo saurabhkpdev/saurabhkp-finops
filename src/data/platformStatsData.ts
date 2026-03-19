@@ -123,7 +123,6 @@ export const datasetMetrics: DatasetMetric[] = [
   { platform: "Power BI", icon: "📊", datasets: 185 },
   { platform: "Tableau", icon: "📈", datasets: 142 },
   { platform: "dbt", icon: "🔶", datasets: 520 },
-  { platform: "Kafka", icon: "📡", datasets: 386 },
 ];
 
 export interface DataProductMetric {

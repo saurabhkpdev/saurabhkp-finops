@@ -39,8 +39,7 @@ const platformIcons: Record<string, string> = {
   Snowflake: "❄️",
   Airflow: "🌀",
   dbt: "🔶",
-  Kafka: "📡",
-  Spark: "⚡",
+  "Power BI": "📊",
   "Power BI": "📊",
   Tableau: "📈",
 };
