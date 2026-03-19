@@ -129,6 +129,20 @@ export const datasetMetrics: DatasetMetric[] = [
   { platform: "Kafka", icon: "📡", datasets: 386 },
 ];
 
+export interface DataProductMetric {
+  category: string;
+  icon: string;
+  count: number;
+}
+
+export const dataProductMetrics: DataProductMetric[] = [
+  { category: "Dashboards", icon: "📊", count: 342 },
+  { category: "ML Models", icon: "🤖", count: 87 },
+  { category: "Data APIs", icon: "🔌", count: 124 },
+  { category: "Reports", icon: "📄", count: 265 },
+  { category: "Data Shares", icon: "🔗", count: 58 },
+];
+
 export interface ProductUserMetric {
   product: string;
   icon: string;

@@ -108,6 +108,30 @@ const PlatformStats = () => {
             </div>
           </CardContent>
         </Card>
+
+        {/* Total Data Products */}
+        <Card className="animate-fade-in">
+          <CardContent className="p-5 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <Layers className="h-6 w-6 text-primary" />
+              <div>
+                <p className="text-sm text-muted-foreground">Total Data Products</p>
+                <p className="text-3xl font-bold text-foreground">
+                  {dataProductMetrics.reduce((sum, d) => sum + d.count, 0).toLocaleString()}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              {dataProductMetrics.map((d, i) => (
+                <div key={i} className="text-center">
+                  <span className="text-lg">{d.icon}</span>
+                  <p className="text-xs text-muted-foreground">{d.category}</p>
+                  <p className="text-sm font-semibold text-foreground">{d.count}</p>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
       </div>
 
       {/* Total Users per Product */}
