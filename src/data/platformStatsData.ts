@@ -153,7 +153,7 @@ export interface ProductUserMetric {
 
 export const productUsersData: ProductUserMetric[] = [
   { product: "Snowflake", icon: "❄️", totalUsers: 342, activeUsers: 285, trend: 12 },
-  { product: "WAS", icon: "🔧", totalUsers: 128, activeUsers: 98, trend: 5 },
+  { product: "AWS", icon: "☁️", totalUsers: 128, activeUsers: 98, trend: 5 },
   { product: "Astronomer", icon: "🚀", totalUsers: 86, activeUsers: 72, trend: 18 },
   { product: "Fabric", icon: "🧵", totalUsers: 215, activeUsers: 178, trend: -3 },
 ];
