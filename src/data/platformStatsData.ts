@@ -56,11 +56,8 @@ export const serviceHealthData: ServiceHealth[] = [
   { name: "Airflow Scheduler", platform: "Airflow", status: "healthy", uptime: 99.95, latency: 35, errorRate: 0.05, cpu: 58, memory: 72, throughput: "340 DAGs/hr" },
   { name: "Airflow Workers", platform: "Airflow", status: "degraded", uptime: 99.82, latency: 80, errorRate: 0.18, cpu: 88, memory: 85, throughput: "180 tasks/hr" },
   { name: "dbt Cloud", platform: "dbt", status: "healthy", uptime: 99.99, latency: 25, errorRate: 0.01, cpu: 32, memory: 44, throughput: "520 models/run" },
-  { name: "Kafka Cluster", platform: "Kafka", status: "healthy", uptime: 99.97, latency: 8, errorRate: 0.03, cpu: 52, memory: 68, throughput: "1.8M msgs/sec" },
-  { name: "Spark Cluster", platform: "Spark", status: "degraded", uptime: 99.78, latency: 250, errorRate: 0.22, cpu: 92, memory: 88, throughput: "850 GB/hr" },
   { name: "Power BI", platform: "Power BI", status: "healthy", uptime: 99.96, latency: 180, errorRate: 0.04, cpu: 28, memory: 38, throughput: "12K queries/hr" },
   { name: "Tableau", platform: "Tableau", status: "healthy", uptime: 99.92, latency: 150, errorRate: 0.06, cpu: 35, memory: 42, throughput: "8K queries/hr" },
-  { name: "Kafka Connect", platform: "Kafka", status: "down", uptime: 98.50, latency: 0, errorRate: 100, cpu: 0, memory: 0, throughput: "0 msgs/sec" },
 ];
 
 export const deploymentData: DeploymentMetric[] = [
