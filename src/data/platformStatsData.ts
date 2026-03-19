@@ -1,6 +1,6 @@
 export interface ServiceHealth {
   name: string;
-  platform: "Snowflake" | "Airflow" | "dbt" | "Kafka" | "Spark" | "Power BI" | "Tableau";
+  platform: "Snowflake" | "Airflow" | "dbt" | "Power BI" | "Tableau";
   status: "healthy" | "degraded" | "down";
   uptime: number;
   latency: number;
@@ -20,7 +20,7 @@ export interface DeploymentMetric {
 
 export interface PipelineMetric {
   name: string;
-  platform: "Airflow" | "dbt" | "Kafka" | "Spark";
+  platform: "Airflow" | "dbt" | "Snowflake" | "Power BI";
   status: "running" | "success" | "failed" | "queued";
   successRate: number;
   avgDuration: number;
@@ -56,11 +56,8 @@ export const serviceHealthData: ServiceHealth[] = [
   { name: "Airflow Scheduler", platform: "Airflow", status: "healthy", uptime: 99.95, latency: 35, errorRate: 0.05, cpu: 58, memory: 72, throughput: "340 DAGs/hr" },
   { name: "Airflow Workers", platform: "Airflow", status: "degraded", uptime: 99.82, latency: 80, errorRate: 0.18, cpu: 88, memory: 85, throughput: "180 tasks/hr" },
   { name: "dbt Cloud", platform: "dbt", status: "healthy", uptime: 99.99, latency: 25, errorRate: 0.01, cpu: 32, memory: 44, throughput: "520 models/run" },
-  { name: "Kafka Cluster", platform: "Kafka", status: "healthy", uptime: 99.97, latency: 8, errorRate: 0.03, cpu: 52, memory: 68, throughput: "1.8M msgs/sec" },
-  { name: "Spark Cluster", platform: "Spark", status: "degraded", uptime: 99.78, latency: 250, errorRate: 0.22, cpu: 92, memory: 88, throughput: "850 GB/hr" },
   { name: "Power BI", platform: "Power BI", status: "healthy", uptime: 99.96, latency: 180, errorRate: 0.04, cpu: 28, memory: 38, throughput: "12K queries/hr" },
   { name: "Tableau", platform: "Tableau", status: "healthy", uptime: 99.92, latency: 150, errorRate: 0.06, cpu: 35, memory: 42, throughput: "8K queries/hr" },
-  { name: "Kafka Connect", platform: "Kafka", status: "down", uptime: 98.50, latency: 0, errorRate: 100, cpu: 0, memory: 0, throughput: "0 msgs/sec" },
 ];
 
 export const deploymentData: DeploymentMetric[] = [
@@ -77,12 +74,10 @@ export const deploymentData: DeploymentMetric[] = [
 export const pipelineData: PipelineMetric[] = [
   { name: "Raw → Staging (Customers)", platform: "Airflow", status: "success", successRate: 98.5, avgDuration: 12, lastRun: "5 min ago", recordsProcessed: 2450000, dataFreshness: "5 min" },
   { name: "Staging → Marts (Revenue)", platform: "dbt", status: "running", successRate: 99.1, avgDuration: 25, lastRun: "Running", recordsProcessed: 8900000, dataFreshness: "Running" },
-  { name: "Clickstream Ingestion", platform: "Kafka", status: "success", successRate: 99.8, avgDuration: 0, lastRun: "Streaming", recordsProcessed: 45000000, dataFreshness: "Real-time" },
-  { name: "Feature Store Refresh", platform: "Spark", status: "failed", successRate: 94.2, avgDuration: 45, lastRun: "3 hr ago", recordsProcessed: 0, dataFreshness: "3 hrs (stale)" },
   { name: "CRM Sync → Snowflake", platform: "Airflow", status: "success", successRate: 97.8, avgDuration: 18, lastRun: "30 min ago", recordsProcessed: 340000, dataFreshness: "30 min" },
-  { name: "Event Stream → Data Lake", platform: "Kafka", status: "queued", successRate: 96.5, avgDuration: 0, lastRun: "Queued", recordsProcessed: 5600000, dataFreshness: "Pending" },
   { name: "dbt Nightly Full Refresh", platform: "dbt", status: "success", successRate: 95.3, avgDuration: 120, lastRun: "6 hr ago", recordsProcessed: 28000000, dataFreshness: "6 hrs" },
-  { name: "Anomaly Detection Pipeline", platform: "Spark", status: "success", successRate: 93.8, avgDuration: 60, lastRun: "1 hr ago", recordsProcessed: 1200000, dataFreshness: "1 hr" },
+  { name: "Snowflake Data Share Sync", platform: "Snowflake", status: "success", successRate: 99.5, avgDuration: 8, lastRun: "15 min ago", recordsProcessed: 1200000, dataFreshness: "15 min" },
+  { name: "Power BI Dataset Refresh", platform: "Power BI", status: "success", successRate: 96.2, avgDuration: 35, lastRun: "1 hr ago", recordsProcessed: 5600000, dataFreshness: "1 hr" },
 ];
 
 export const warehouseData: WarehouseMetric[] = [
@@ -128,7 +123,6 @@ export const datasetMetrics: DatasetMetric[] = [
   { platform: "Power BI", icon: "📊", datasets: 185 },
   { platform: "Tableau", icon: "📈", datasets: 142 },
   { platform: "dbt", icon: "🔶", datasets: 520 },
-  { platform: "Kafka", icon: "📡", datasets: 386 },
 ];
 
 export interface DataProductMetric {
