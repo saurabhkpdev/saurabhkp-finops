@@ -3,8 +3,8 @@ import { DollarSign, Activity, Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { label: "FinOps", path: "/", icon: DollarSign },
   { label: "Platform Statistics", path: "/platform", icon: Activity },
+  { label: "FinOps", path: "/finops", icon: DollarSign },
   { label: "Security Ops", path: "/security", icon: Shield },
 ];
 
