@@ -74,12 +74,10 @@ export const deploymentData: DeploymentMetric[] = [
 export const pipelineData: PipelineMetric[] = [
   { name: "Raw → Staging (Customers)", platform: "Airflow", status: "success", successRate: 98.5, avgDuration: 12, lastRun: "5 min ago", recordsProcessed: 2450000, dataFreshness: "5 min" },
   { name: "Staging → Marts (Revenue)", platform: "dbt", status: "running", successRate: 99.1, avgDuration: 25, lastRun: "Running", recordsProcessed: 8900000, dataFreshness: "Running" },
-  { name: "Clickstream Ingestion", platform: "Kafka", status: "success", successRate: 99.8, avgDuration: 0, lastRun: "Streaming", recordsProcessed: 45000000, dataFreshness: "Real-time" },
-  { name: "Feature Store Refresh", platform: "Spark", status: "failed", successRate: 94.2, avgDuration: 45, lastRun: "3 hr ago", recordsProcessed: 0, dataFreshness: "3 hrs (stale)" },
   { name: "CRM Sync → Snowflake", platform: "Airflow", status: "success", successRate: 97.8, avgDuration: 18, lastRun: "30 min ago", recordsProcessed: 340000, dataFreshness: "30 min" },
-  { name: "Event Stream → Data Lake", platform: "Kafka", status: "queued", successRate: 96.5, avgDuration: 0, lastRun: "Queued", recordsProcessed: 5600000, dataFreshness: "Pending" },
   { name: "dbt Nightly Full Refresh", platform: "dbt", status: "success", successRate: 95.3, avgDuration: 120, lastRun: "6 hr ago", recordsProcessed: 28000000, dataFreshness: "6 hrs" },
-  { name: "Anomaly Detection Pipeline", platform: "Spark", status: "success", successRate: 93.8, avgDuration: 60, lastRun: "1 hr ago", recordsProcessed: 1200000, dataFreshness: "1 hr" },
+  { name: "Snowflake Data Share Sync", platform: "Snowflake", status: "success", successRate: 99.5, avgDuration: 8, lastRun: "15 min ago", recordsProcessed: 1200000, dataFreshness: "15 min" },
+  { name: "Power BI Dataset Refresh", platform: "Power BI", status: "success", successRate: 96.2, avgDuration: 35, lastRun: "1 hr ago", recordsProcessed: 5600000, dataFreshness: "1 hr" },
 ];
 
 export const warehouseData: WarehouseMetric[] = [
