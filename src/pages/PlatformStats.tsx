@@ -60,7 +60,7 @@ const PlatformStats = () => {
         <p className="text-muted-foreground mt-1">Data infrastructure health, pipeline monitoring, and warehouse performance</p>
       </header>
       {/* Summary Banners */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-8">
         {/* Total Active Users */}
         <Card className="animate-fade-in">
           <CardContent className="p-5 flex items-center justify-between">
