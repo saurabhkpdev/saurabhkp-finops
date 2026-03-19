@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import {
   Activity, Server, Rocket, Clock, AlertTriangle,
   CheckCircle2, XCircle, Timer, Database, ArrowDown, ArrowUp,
-  HardDrive, Gauge, BarChart3, Layers
+  HardDrive, Gauge, BarChart3, Layers, Users
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
