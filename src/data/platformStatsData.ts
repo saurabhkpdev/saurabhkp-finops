@@ -1,6 +1,6 @@
 export interface ServiceHealth {
   name: string;
-  platform: "Snowflake" | "Airflow" | "dbt" | "Kafka" | "Spark" | "Looker";
+  platform: "Snowflake" | "Airflow" | "dbt" | "Kafka" | "Spark" | "Power BI" | "Tableau";
   status: "healthy" | "degraded" | "down";
   uptime: number;
   latency: number;
