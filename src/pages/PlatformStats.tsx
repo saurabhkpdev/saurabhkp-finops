@@ -13,7 +13,7 @@ import {
 } from "recharts";
 import {
   serviceHealthData, deploymentData, pipelineData, doraMetrics,
-  warehouseData, dataQualityData, dataVolumeMetrics, productUsersData, datasetMetrics
+  warehouseData, dataQualityData, dataVolumeMetrics, productUsersData, datasetMetrics, dataProductMetrics
 } from "@/data/platformStatsData";
 
 const statusColors: Record<string, string> = {
@@ -60,7 +60,7 @@ const PlatformStats = () => {
         <p className="text-muted-foreground mt-1">Data infrastructure health, pipeline monitoring, and warehouse performance</p>
       </header>
       {/* Summary Banners */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-8">
         {/* Total Active Users */}
         <Card className="animate-fade-in">
           <CardContent className="p-5 flex items-center justify-between">
@@ -103,6 +103,30 @@ const PlatformStats = () => {
                   <span className="text-lg">{d.icon}</span>
                   <p className="text-xs text-muted-foreground">{d.platform}</p>
                   <p className="text-sm font-semibold text-foreground">{d.datasets.toLocaleString()}</p>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Total Data Products */}
+        <Card className="animate-fade-in">
+          <CardContent className="p-5 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <Layers className="h-6 w-6 text-primary" />
+              <div>
+                <p className="text-sm text-muted-foreground">Total Data Products</p>
+                <p className="text-3xl font-bold text-foreground">
+                  {dataProductMetrics.reduce((sum, d) => sum + d.count, 0).toLocaleString()}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              {dataProductMetrics.map((d, i) => (
+                <div key={i} className="text-center">
+                  <span className="text-lg">{d.icon}</span>
+                  <p className="text-xs text-muted-foreground">{d.category}</p>
+                  <p className="text-sm font-semibold text-foreground">{d.count}</p>
                 </div>
               ))}
             </div>
