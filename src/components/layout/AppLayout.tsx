@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 const navItems = [
   { label: "Platform Statistics", path: "/platform", icon: Activity },
   { label: "FinOps", path: "/finops", icon: DollarSign },
-  { label: "Security Ops", path: "/security", icon: Shield },
+  { label: "SecOps", path: "/security", icon: Shield },
 ];
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
