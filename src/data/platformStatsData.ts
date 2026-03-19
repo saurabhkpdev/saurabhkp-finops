@@ -20,7 +20,7 @@ export interface DeploymentMetric {
 
 export interface PipelineMetric {
   name: string;
-  platform: "Airflow" | "dbt" | "Kafka" | "Spark";
+  platform: "Airflow" | "dbt" | "Snowflake" | "Power BI";
   status: "running" | "success" | "failed" | "queued";
   successRate: number;
   avgDuration: number;
