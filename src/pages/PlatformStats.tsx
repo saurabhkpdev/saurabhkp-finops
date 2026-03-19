@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import {
   Activity, Server, Rocket, Clock, AlertTriangle,
   CheckCircle2, XCircle, Timer, Database, ArrowDown, ArrowUp,
-  HardDrive, Gauge, BarChart3, Layers
+  HardDrive, Gauge, BarChart3, Layers, Users
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -13,7 +13,7 @@ import {
 } from "recharts";
 import {
   serviceHealthData, deploymentData, pipelineData, doraMetrics,
-  warehouseData, dataQualityData, dataVolumeMetrics
+  warehouseData, dataQualityData, dataVolumeMetrics, productUsersData
 } from "@/data/platformStatsData";
 
 const statusColors: Record<string, string> = {
@@ -59,6 +59,32 @@ const PlatformStats = () => {
         <h1 className="text-3xl font-bold text-foreground tracking-tight">Platform Statistics</h1>
         <p className="text-muted-foreground mt-1">Data infrastructure health, pipeline monitoring, and warehouse performance</p>
       </header>
+
+      {/* Total Users per Product */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        {productUsersData.map((p, i) => (
+          <Card key={i} className="animate-slide-up" style={{ animationDelay: `${i * 50}ms` }}>
+            <CardContent className="p-5">
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-2">
+                  <span className="text-xl">{p.icon}</span>
+                  <span className="text-sm font-medium text-foreground">{p.product}</span>
+                </div>
+                <Users className="h-4 w-4 text-muted-foreground" />
+              </div>
+              <div className="text-2xl font-bold text-foreground">{p.totalUsers.toLocaleString()}</div>
+              <div className="flex items-center justify-between mt-1">
+                <span className="text-xs text-muted-foreground">{p.activeUsers} active</span>
+                <span className={`text-xs font-medium flex items-center gap-0.5 ${p.trend >= 0 ? "text-green-600" : "text-red-500"}`}>
+                  {p.trend >= 0 ? <ArrowUp className="h-3 w-3" /> : <ArrowDown className="h-3 w-3" />}
+                  {Math.abs(p.trend)}%
+                </span>
+              </div>
+              <Progress value={(p.activeUsers / p.totalUsers) * 100} className="mt-2 h-1.5" />
+            </CardContent>
+          </Card>
+        ))}
+      </div>
 
       {/* DORA / Pipeline Metrics */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
