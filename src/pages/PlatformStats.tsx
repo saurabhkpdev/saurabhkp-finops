@@ -59,6 +59,29 @@ const PlatformStats = () => {
         <h1 className="text-3xl font-bold text-foreground tracking-tight">Platform Statistics</h1>
         <p className="text-muted-foreground mt-1">Data infrastructure health, pipeline monitoring, and warehouse performance</p>
       </header>
+      {/* Total Active Users Banner */}
+      <Card className="mb-8 animate-fade-in">
+        <CardContent className="p-5 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Users className="h-6 w-6 text-primary" />
+            <div>
+              <p className="text-sm text-muted-foreground">Total Active Users</p>
+              <p className="text-3xl font-bold text-foreground">
+                {productUsersData.reduce((sum, p) => sum + p.activeUsers, 0).toLocaleString()}
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-6">
+            {productUsersData.map((p, i) => (
+              <div key={i} className="text-center">
+                <span className="text-lg">{p.icon}</span>
+                <p className="text-xs text-muted-foreground">{p.product}</p>
+                <p className="text-sm font-semibold text-foreground">{p.activeUsers}</p>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Total Users per Product */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
