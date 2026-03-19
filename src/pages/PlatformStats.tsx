@@ -40,7 +40,6 @@ const platformIcons: Record<string, string> = {
   Airflow: "🌀",
   dbt: "🔶",
   "Power BI": "📊",
-  "Power BI": "📊",
   Tableau: "📈",
 };
 
