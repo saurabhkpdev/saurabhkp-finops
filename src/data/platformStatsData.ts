@@ -82,7 +82,7 @@ export const pipelineData: PipelineMetric[] = [
 export const warehouseData: WarehouseMetric[] = [
   { name: "ANALYTICS_WH", size: "X-Large", status: "active", creditsUsed: 342, creditBudget: 400, avgQueueTime: 1.2, queriesExecuted: 45200, spillToRemote: 2.1 },
   { name: "ETL_WH", size: "Large", status: "active", creditsUsed: 218, creditBudget: 250, avgQueueTime: 0.8, queriesExecuted: 12800, spillToRemote: 0.5 },
-  { name: "DBT_WH", size: "Medium", status: "active", creditsUsed: 156, creditBudget: 200, avgQueueTime: 0.3, queriesExecuted: 8900, spillToRemote: 0.1 },
+  { name: "TRANSFORM_WH", size: "Medium", status: "active", creditsUsed: 156, creditBudget: 200, avgQueueTime: 0.3, queriesExecuted: 8900, spillToRemote: 0.1 },
   { name: "REPORTING_WH", size: "Small", status: "suspended", creditsUsed: 45, creditBudget: 100, avgQueueTime: 0, queriesExecuted: 3200, spillToRemote: 0 },
   { name: "ML_WH", size: "2X-Large", status: "resizing", creditsUsed: 480, creditBudget: 500, avgQueueTime: 3.5, queriesExecuted: 2100, spillToRemote: 8.4 },
 ];
