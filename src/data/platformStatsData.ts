@@ -121,7 +121,7 @@ export const datasetMetrics: DatasetMetric[] = [
   { platform: "AWS S3", icon: "☁️", datasets: 1340 },
   { platform: "Power BI", icon: "📊", datasets: 185 },
   { platform: "Tableau", icon: "📈", datasets: 142 },
-  { platform: "dbt", icon: "🔶", datasets: 520 },
+  
 ];
 
 export interface DataProductMetric {
