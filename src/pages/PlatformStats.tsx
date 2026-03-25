@@ -47,7 +47,7 @@ const PlatformStats = () => {
   const degradedCount = serviceHealthData.filter(s => s.status === "degraded").length;
   const downCount = serviceHealthData.filter(s => s.status === "down").length;
 
-  const totalDbtRuns = useMemo(() => deploymentData.reduce((a, d) => a + d.dbtRuns, 0), []);
+  const totalPipelineRuns = useMemo(() => deploymentData.reduce((a, d) => a + d.pipelineRuns, 0), []);
   const totalDagDeploys = useMemo(() => deploymentData.reduce((a, d) => a + d.dagDeploys, 0), []);
   const totalFailures = useMemo(() => deploymentData.reduce((a, d) => a + d.failures, 0), []);
 
