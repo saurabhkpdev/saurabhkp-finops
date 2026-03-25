@@ -61,14 +61,14 @@ export const serviceHealthData: ServiceHealth[] = [
 ];
 
 export const deploymentData: DeploymentMetric[] = [
-  { week: "W1", dbtRuns: 42, dagDeploys: 12, failures: 3, rollbacks: 1 },
-  { week: "W2", dbtRuns: 56, dagDeploys: 18, failures: 2, rollbacks: 0 },
-  { week: "W3", dbtRuns: 38, dagDeploys: 8, failures: 5, rollbacks: 2 },
-  { week: "W4", dbtRuns: 61, dagDeploys: 22, failures: 1, rollbacks: 0 },
-  { week: "W5", dbtRuns: 48, dagDeploys: 15, failures: 4, rollbacks: 1 },
-  { week: "W6", dbtRuns: 55, dagDeploys: 20, failures: 2, rollbacks: 0 },
-  { week: "W7", dbtRuns: 70, dagDeploys: 25, failures: 1, rollbacks: 1 },
-  { week: "W8", dbtRuns: 63, dagDeploys: 19, failures: 0, rollbacks: 0 },
+  { week: "W1", pipelineRuns: 42, dagDeploys: 12, failures: 3, rollbacks: 1 },
+  { week: "W2", pipelineRuns: 56, dagDeploys: 18, failures: 2, rollbacks: 0 },
+  { week: "W3", pipelineRuns: 38, dagDeploys: 8, failures: 5, rollbacks: 2 },
+  { week: "W4", pipelineRuns: 61, dagDeploys: 22, failures: 1, rollbacks: 0 },
+  { week: "W5", pipelineRuns: 48, dagDeploys: 15, failures: 4, rollbacks: 1 },
+  { week: "W6", pipelineRuns: 55, dagDeploys: 20, failures: 2, rollbacks: 0 },
+  { week: "W7", pipelineRuns: 70, dagDeploys: 25, failures: 1, rollbacks: 1 },
+  { week: "W8", pipelineRuns: 63, dagDeploys: 19, failures: 0, rollbacks: 0 },
 ];
 
 export const pipelineData: PipelineMetric[] = [
