@@ -12,7 +12,7 @@ export interface ServiceHealth {
 
 export interface DeploymentMetric {
   week: string;
-  dbtRuns: number;
+  pipelineRuns: number;
   dagDeploys: number;
   failures: number;
   rollbacks: number;
