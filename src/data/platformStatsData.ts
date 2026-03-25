@@ -75,8 +75,7 @@ export const pipelineData: PipelineMetric[] = [
   { name: "Raw → Staging (Customers)", platform: "Airflow", status: "success", successRate: 98.5, avgDuration: 12, lastRun: "5 min ago", recordsProcessed: 2450000, dataFreshness: "5 min" },
   
   { name: "CRM Sync → Snowflake", platform: "Airflow", status: "success", successRate: 97.8, avgDuration: 18, lastRun: "30 min ago", recordsProcessed: 340000, dataFreshness: "30 min" },
-  { name: "dbt Nightly Full Refresh", platform: "dbt", status: "success", successRate: 95.3, avgDuration: 120, lastRun: "6 hr ago", recordsProcessed: 28000000, dataFreshness: "6 hrs" },
-  { name: "Snowflake Data Share Sync", platform: "Snowflake", status: "success", successRate: 99.5, avgDuration: 8, lastRun: "15 min ago", recordsProcessed: 1200000, dataFreshness: "15 min" },
+  { name: "Snowflake Data Sync", platform: "Snowflake", status: "success", successRate: 99.5, avgDuration: 8, lastRun: "15 min ago", recordsProcessed: 1200000, dataFreshness: "15 min" },
   { name: "Power BI Dataset Refresh", platform: "Power BI", status: "success", successRate: 96.2, avgDuration: 35, lastRun: "1 hr ago", recordsProcessed: 5600000, dataFreshness: "1 hr" },
 ];
 
