@@ -62,8 +62,8 @@ const PlatformStats = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-8">
         {/* Total Active Users */}
         <Card className="animate-fade-in">
-          <CardContent className="p-5 flex items-center justify-between">
-            <div className="flex items-center gap-3">
+          <CardContent className="p-5">
+            <div className="flex items-center gap-3 mb-4">
               <Users className="h-6 w-6 text-primary" />
               <div>
                 <p className="text-sm text-muted-foreground">Total Active Users</p>
@@ -72,11 +72,11 @@ const PlatformStats = () => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-6">
+            <div className="grid grid-cols-4 gap-2">
               {productUsersData.map((p, i) => (
                 <div key={i} className="text-center">
                   <span className="text-lg">{p.icon}</span>
-                  <p className="text-xs text-muted-foreground">{p.product}</p>
+                  <p className="text-xs text-muted-foreground truncate">{p.product}</p>
                   <p className="text-sm font-semibold text-foreground">{p.activeUsers}</p>
                 </div>
               ))}
@@ -86,8 +86,8 @@ const PlatformStats = () => {
 
         {/* Total Datasets */}
         <Card className="animate-fade-in">
-          <CardContent className="p-5 flex items-center justify-between">
-            <div className="flex items-center gap-3">
+          <CardContent className="p-5">
+            <div className="flex items-center gap-3 mb-4">
               <Database className="h-6 w-6 text-primary" />
               <div>
                 <p className="text-sm text-muted-foreground">Total Datasets</p>
@@ -96,11 +96,11 @@ const PlatformStats = () => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-6">
+            <div className="grid grid-cols-4 gap-2">
               {datasetMetrics.map((d, i) => (
                 <div key={i} className="text-center">
                   <span className="text-lg">{d.icon}</span>
-                  <p className="text-xs text-muted-foreground">{d.platform}</p>
+                  <p className="text-xs text-muted-foreground truncate">{d.platform}</p>
                   <p className="text-sm font-semibold text-foreground">{d.datasets.toLocaleString()}</p>
                 </div>
               ))}
@@ -110,8 +110,8 @@ const PlatformStats = () => {
 
         {/* Total Data Products */}
         <Card className="animate-fade-in">
-          <CardContent className="p-5 flex items-center justify-between">
-            <div className="flex items-center gap-3">
+          <CardContent className="p-5">
+            <div className="flex items-center gap-3 mb-4">
               <Layers className="h-6 w-6 text-primary" />
               <div>
                 <p className="text-sm text-muted-foreground">Total Data Products</p>
@@ -120,11 +120,11 @@ const PlatformStats = () => {
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="grid grid-cols-4 gap-2">
               {dataProductMetrics.map((d, i) => (
                 <div key={i} className="text-center">
                   <span className="text-lg">{d.icon}</span>
-                  <p className="text-xs text-muted-foreground">{d.category}</p>
+                  <p className="text-xs text-muted-foreground truncate">{d.category}</p>
                   <p className="text-sm font-semibold text-foreground">{d.count}</p>
                 </div>
               ))}
