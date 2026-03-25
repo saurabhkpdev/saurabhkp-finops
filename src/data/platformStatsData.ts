@@ -55,7 +55,7 @@ export const serviceHealthData: ServiceHealth[] = [
   { name: "Snowflake", platform: "Snowflake", status: "healthy", uptime: 99.98, latency: 120, errorRate: 0.02, cpu: 45, memory: 62, throughput: "2.4TB/day" },
   { name: "Airflow Scheduler", platform: "Airflow", status: "healthy", uptime: 99.95, latency: 35, errorRate: 0.05, cpu: 58, memory: 72, throughput: "340 DAGs/hr" },
   { name: "Airflow Workers", platform: "Airflow", status: "degraded", uptime: 99.82, latency: 80, errorRate: 0.18, cpu: 88, memory: 85, throughput: "180 tasks/hr" },
-  { name: "dbt Cloud", platform: "dbt", status: "healthy", uptime: 99.99, latency: 25, errorRate: 0.01, cpu: 32, memory: 44, throughput: "520 models/run" },
+  
   { name: "Power BI", platform: "Power BI", status: "healthy", uptime: 99.96, latency: 180, errorRate: 0.04, cpu: 28, memory: 38, throughput: "12K queries/hr" },
   { name: "Tableau", platform: "Tableau", status: "healthy", uptime: 99.92, latency: 150, errorRate: 0.06, cpu: 35, memory: 42, throughput: "8K queries/hr" },
 ];
