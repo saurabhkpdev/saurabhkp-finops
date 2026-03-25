@@ -1,6 +1,6 @@
 export interface ServiceHealth {
   name: string;
-  platform: "Snowflake" | "Airflow" | "dbt" | "Power BI" | "Tableau";
+  platform: "Snowflake" | "Airflow" | "Power BI" | "Tableau";
   status: "healthy" | "degraded" | "down";
   uptime: number;
   latency: number;
@@ -12,7 +12,7 @@ export interface ServiceHealth {
 
 export interface DeploymentMetric {
   week: string;
-  dbtRuns: number;
+  pipelineRuns: number;
   dagDeploys: number;
   failures: number;
   rollbacks: number;
@@ -20,7 +20,7 @@ export interface DeploymentMetric {
 
 export interface PipelineMetric {
   name: string;
-  platform: "Airflow" | "dbt" | "Snowflake" | "Power BI";
+  platform: "Airflow" | "Snowflake" | "Power BI";
   status: "running" | "success" | "failed" | "queued";
   successRate: number;
   avgDuration: number;
@@ -55,35 +55,34 @@ export const serviceHealthData: ServiceHealth[] = [
   { name: "Snowflake", platform: "Snowflake", status: "healthy", uptime: 99.98, latency: 120, errorRate: 0.02, cpu: 45, memory: 62, throughput: "2.4TB/day" },
   { name: "Airflow Scheduler", platform: "Airflow", status: "healthy", uptime: 99.95, latency: 35, errorRate: 0.05, cpu: 58, memory: 72, throughput: "340 DAGs/hr" },
   { name: "Airflow Workers", platform: "Airflow", status: "degraded", uptime: 99.82, latency: 80, errorRate: 0.18, cpu: 88, memory: 85, throughput: "180 tasks/hr" },
-  { name: "dbt Cloud", platform: "dbt", status: "healthy", uptime: 99.99, latency: 25, errorRate: 0.01, cpu: 32, memory: 44, throughput: "520 models/run" },
+  
   { name: "Power BI", platform: "Power BI", status: "healthy", uptime: 99.96, latency: 180, errorRate: 0.04, cpu: 28, memory: 38, throughput: "12K queries/hr" },
   { name: "Tableau", platform: "Tableau", status: "healthy", uptime: 99.92, latency: 150, errorRate: 0.06, cpu: 35, memory: 42, throughput: "8K queries/hr" },
 ];
 
 export const deploymentData: DeploymentMetric[] = [
-  { week: "W1", dbtRuns: 42, dagDeploys: 12, failures: 3, rollbacks: 1 },
-  { week: "W2", dbtRuns: 56, dagDeploys: 18, failures: 2, rollbacks: 0 },
-  { week: "W3", dbtRuns: 38, dagDeploys: 8, failures: 5, rollbacks: 2 },
-  { week: "W4", dbtRuns: 61, dagDeploys: 22, failures: 1, rollbacks: 0 },
-  { week: "W5", dbtRuns: 48, dagDeploys: 15, failures: 4, rollbacks: 1 },
-  { week: "W6", dbtRuns: 55, dagDeploys: 20, failures: 2, rollbacks: 0 },
-  { week: "W7", dbtRuns: 70, dagDeploys: 25, failures: 1, rollbacks: 1 },
-  { week: "W8", dbtRuns: 63, dagDeploys: 19, failures: 0, rollbacks: 0 },
+  { week: "W1", pipelineRuns: 42, dagDeploys: 12, failures: 3, rollbacks: 1 },
+  { week: "W2", pipelineRuns: 56, dagDeploys: 18, failures: 2, rollbacks: 0 },
+  { week: "W3", pipelineRuns: 38, dagDeploys: 8, failures: 5, rollbacks: 2 },
+  { week: "W4", pipelineRuns: 61, dagDeploys: 22, failures: 1, rollbacks: 0 },
+  { week: "W5", pipelineRuns: 48, dagDeploys: 15, failures: 4, rollbacks: 1 },
+  { week: "W6", pipelineRuns: 55, dagDeploys: 20, failures: 2, rollbacks: 0 },
+  { week: "W7", pipelineRuns: 70, dagDeploys: 25, failures: 1, rollbacks: 1 },
+  { week: "W8", pipelineRuns: 63, dagDeploys: 19, failures: 0, rollbacks: 0 },
 ];
 
 export const pipelineData: PipelineMetric[] = [
   { name: "Raw → Staging (Customers)", platform: "Airflow", status: "success", successRate: 98.5, avgDuration: 12, lastRun: "5 min ago", recordsProcessed: 2450000, dataFreshness: "5 min" },
-  { name: "Staging → Marts (Revenue)", platform: "dbt", status: "running", successRate: 99.1, avgDuration: 25, lastRun: "Running", recordsProcessed: 8900000, dataFreshness: "Running" },
+  
   { name: "CRM Sync → Snowflake", platform: "Airflow", status: "success", successRate: 97.8, avgDuration: 18, lastRun: "30 min ago", recordsProcessed: 340000, dataFreshness: "30 min" },
-  { name: "dbt Nightly Full Refresh", platform: "dbt", status: "success", successRate: 95.3, avgDuration: 120, lastRun: "6 hr ago", recordsProcessed: 28000000, dataFreshness: "6 hrs" },
-  { name: "Snowflake Data Share Sync", platform: "Snowflake", status: "success", successRate: 99.5, avgDuration: 8, lastRun: "15 min ago", recordsProcessed: 1200000, dataFreshness: "15 min" },
+  { name: "Snowflake Data Sync", platform: "Snowflake", status: "success", successRate: 99.5, avgDuration: 8, lastRun: "15 min ago", recordsProcessed: 1200000, dataFreshness: "15 min" },
   { name: "Power BI Dataset Refresh", platform: "Power BI", status: "success", successRate: 96.2, avgDuration: 35, lastRun: "1 hr ago", recordsProcessed: 5600000, dataFreshness: "1 hr" },
 ];
 
 export const warehouseData: WarehouseMetric[] = [
   { name: "ANALYTICS_WH", size: "X-Large", status: "active", creditsUsed: 342, creditBudget: 400, avgQueueTime: 1.2, queriesExecuted: 45200, spillToRemote: 2.1 },
   { name: "ETL_WH", size: "Large", status: "active", creditsUsed: 218, creditBudget: 250, avgQueueTime: 0.8, queriesExecuted: 12800, spillToRemote: 0.5 },
-  { name: "DBT_WH", size: "Medium", status: "active", creditsUsed: 156, creditBudget: 200, avgQueueTime: 0.3, queriesExecuted: 8900, spillToRemote: 0.1 },
+  { name: "TRANSFORM_WH", size: "Medium", status: "active", creditsUsed: 156, creditBudget: 200, avgQueueTime: 0.3, queriesExecuted: 8900, spillToRemote: 0.1 },
   { name: "REPORTING_WH", size: "Small", status: "suspended", creditsUsed: 45, creditBudget: 100, avgQueueTime: 0, queriesExecuted: 3200, spillToRemote: 0 },
   { name: "ML_WH", size: "2X-Large", status: "resizing", creditsUsed: 480, creditBudget: 500, avgQueueTime: 3.5, queriesExecuted: 2100, spillToRemote: 8.4 },
 ];
@@ -98,7 +97,7 @@ export const dataQualityData: DataQualityMetric[] = [
 ];
 
 export const doraMetrics = {
-  deployFrequency: { value: "8.2/day", trend: 18, description: "dbt + Airflow deploys" },
+  deployFrequency: { value: "8.2/day", trend: 18, description: "Pipeline + Airflow deploys" },
   leadTime: { value: "1.8 hrs", trend: -12, description: "Code to production" },
   changeFailureRate: { value: "3.8%", trend: -20, description: "Failed pipeline runs" },
   mttr: { value: "14 min", trend: -28, description: "Pipeline recovery time" },
@@ -122,7 +121,7 @@ export const datasetMetrics: DatasetMetric[] = [
   { platform: "AWS S3", icon: "☁️", datasets: 1340 },
   { platform: "Power BI", icon: "📊", datasets: 185 },
   { platform: "Tableau", icon: "📈", datasets: 142 },
-  { platform: "dbt", icon: "🔶", datasets: 520 },
+  
 ];
 
 export interface DataProductMetric {
@@ -136,7 +135,7 @@ export const dataProductMetrics: DataProductMetric[] = [
   { category: "ML Models", icon: "🤖", count: 87 },
   { category: "Data APIs", icon: "🔌", count: 124 },
   { category: "Reports", icon: "📄", count: 265 },
-  { category: "Data Shares", icon: "🔗", count: 58 },
+  
 ];
 
 export interface ProductUserMetric {

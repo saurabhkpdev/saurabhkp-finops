@@ -38,7 +38,6 @@ const freshnessColors: Record<string, string> = {
 const platformIcons: Record<string, string> = {
   Snowflake: "❄️",
   Airflow: "🌀",
-  dbt: "🔶",
   "Power BI": "📊",
   Tableau: "📈",
 };
@@ -48,7 +47,7 @@ const PlatformStats = () => {
   const degradedCount = serviceHealthData.filter(s => s.status === "degraded").length;
   const downCount = serviceHealthData.filter(s => s.status === "down").length;
 
-  const totalDbtRuns = useMemo(() => deploymentData.reduce((a, d) => a + d.dbtRuns, 0), []);
+  const totalPipelineRuns = useMemo(() => deploymentData.reduce((a, d) => a + d.pipelineRuns, 0), []);
   const totalDagDeploys = useMemo(() => deploymentData.reduce((a, d) => a + d.dagDeploys, 0), []);
   const totalFailures = useMemo(() => deploymentData.reduce((a, d) => a + d.failures, 0), []);
 
@@ -296,7 +295,7 @@ const PlatformStats = () => {
               <Gauge className="h-5 w-5 text-primary" /> Pipeline Deployment Activity
             </CardTitle>
             <div className="text-sm text-muted-foreground">
-              {totalDbtRuns} dbt runs · {totalDagDeploys} DAG deploys · {totalFailures} failures
+              {totalPipelineRuns} pipeline runs · {totalDagDeploys} DAG deploys · {totalFailures} failures
             </div>
           </div>
         </CardHeader>
@@ -316,7 +315,7 @@ const PlatformStats = () => {
                   }}
                 />
                 <Legend />
-                <Bar dataKey="dbtRuns" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} name="dbt Runs" />
+                <Bar dataKey="pipelineRuns" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} name="Pipeline Runs" />
                 <Bar dataKey="dagDeploys" fill="hsl(var(--accent-foreground))" radius={[4, 4, 0, 0]} name="DAG Deploys" />
                 <Bar dataKey="failures" fill="hsl(var(--destructive))" radius={[4, 4, 0, 0]} name="Failures" />
               </BarChart>
@@ -379,11 +378,11 @@ const PlatformStats = () => {
         </CardContent>
       </Card>
 
-      {/* Data Quality (dbt Tests) */}
+      {/* Data Quality Tests */}
       <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-lg flex items-center gap-2">
-            🔶 <span>Data Quality — dbt Tests</span>
+            <CheckCircle2 className="h-5 w-5 text-primary" /> <span>Data Quality Tests</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
