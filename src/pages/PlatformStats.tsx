@@ -315,7 +315,7 @@ const PlatformStats = () => {
                   }}
                 />
                 <Legend />
-                <Bar dataKey="dbtRuns" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} name="dbt Runs" />
+                <Bar dataKey="pipelineRuns" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} name="Pipeline Runs" />
                 <Bar dataKey="dagDeploys" fill="hsl(var(--accent-foreground))" radius={[4, 4, 0, 0]} name="DAG Deploys" />
                 <Bar dataKey="failures" fill="hsl(var(--destructive))" radius={[4, 4, 0, 0]} name="Failures" />
               </BarChart>
