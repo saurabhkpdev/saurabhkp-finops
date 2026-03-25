@@ -135,7 +135,7 @@ export const dataProductMetrics: DataProductMetric[] = [
   { category: "ML Models", icon: "🤖", count: 87 },
   { category: "Data APIs", icon: "🔌", count: 124 },
   { category: "Reports", icon: "📄", count: 265 },
-  { category: "Data Shares", icon: "🔗", count: 58 },
+  
 ];
 
 export interface ProductUserMetric {

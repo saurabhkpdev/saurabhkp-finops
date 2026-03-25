@@ -38,7 +38,6 @@ const freshnessColors: Record<string, string> = {
 const platformIcons: Record<string, string> = {
   Snowflake: "❄️",
   Airflow: "🌀",
-  dbt: "🔶",
   "Power BI": "📊",
   Tableau: "📈",
 };
