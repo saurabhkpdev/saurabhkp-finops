@@ -295,7 +295,7 @@ const PlatformStats = () => {
               <Gauge className="h-5 w-5 text-primary" /> Pipeline Deployment Activity
             </CardTitle>
             <div className="text-sm text-muted-foreground">
-              {totalDbtRuns} dbt runs · {totalDagDeploys} DAG deploys · {totalFailures} failures
+              {totalPipelineRuns} pipeline runs · {totalDagDeploys} DAG deploys · {totalFailures} failures
             </div>
           </div>
         </CardHeader>
