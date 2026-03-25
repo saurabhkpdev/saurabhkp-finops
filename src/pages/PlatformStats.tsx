@@ -378,11 +378,11 @@ const PlatformStats = () => {
         </CardContent>
       </Card>
 
-      {/* Data Quality (dbt Tests) */}
+      {/* Data Quality Tests */}
       <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-lg flex items-center gap-2">
-            🔶 <span>Data Quality — dbt Tests</span>
+            <CheckCircle2 className="h-5 w-5 text-primary" /> <span>Data Quality Tests</span>
           </CardTitle>
         </CardHeader>
         <CardContent>

@@ -97,7 +97,7 @@ export const dataQualityData: DataQualityMetric[] = [
 ];
 
 export const doraMetrics = {
-  deployFrequency: { value: "8.2/day", trend: 18, description: "dbt + Airflow deploys" },
+  deployFrequency: { value: "8.2/day", trend: 18, description: "Pipeline + Airflow deploys" },
   leadTime: { value: "1.8 hrs", trend: -12, description: "Code to production" },
   changeFailureRate: { value: "3.8%", trend: -20, description: "Failed pipeline runs" },
   mttr: { value: "14 min", trend: -28, description: "Pipeline recovery time" },
